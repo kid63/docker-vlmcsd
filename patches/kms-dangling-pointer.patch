@@ -1,0 +1,14 @@
+--- a/src/kms.c
++++ b/src/kms.c
+@@ -465,12 +465,12 @@
+ 	const char* pid;
++	char ePid[PID_BUFFER_SIZE];
+ 
+ 	if (RandomizationLevel == 2)
+ 	{
+ 		if (IsValidKmsPid(ApplicationId, KmsData->AppItemList + appIndex))
+ 		{
+-			char ePid[PID_BUFFER_SIZE];
+ 			getRandomPid(appIndex, ePid);
+ 			pid = ePid;
+ 		}
