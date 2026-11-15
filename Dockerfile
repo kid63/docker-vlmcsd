@@ -5,11 +5,8 @@ RUN apt-get update \
         ca-certificates \
         build-essential \
         git \
-<<<<<<< ours
         patch \
-=======
         dos2unix \
->>>>>>> theirs
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
