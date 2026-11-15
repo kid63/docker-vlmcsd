@@ -5,14 +5,19 @@ RUN apt-get update \
         ca-certificates \
         build-essential \
         git \
+<<<<<<< ours
         patch \
+=======
+        dos2unix \
+>>>>>>> theirs
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
 
 RUN git clone https://github.com/Wind4/vlmcsd.git .
 COPY patches/kms-dangling-pointer.patch /tmp/
-RUN patch -p1 < /tmp/kms-dangling-pointer.patch
+RUN dos2unix src/kms.c \
+    && patch -p1 < /tmp/kms-dangling-pointer.patch
 
 RUN make
 
