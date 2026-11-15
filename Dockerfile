@@ -1,16 +1,29 @@
-FROM alpine:latest AS builder
-WORKDIR /root
-RUN apk add --no-cache git make build-base && \
-    git clone --branch master --single-branch https://github.com/Wind4/vlmcsd.git && \
-    cd vlmcsd && \
-    make
+FROM debian:trixie-slim AS builder
 
-FROM alpine:latest
-COPY --from=builder /root/vlmcsd/bin/vlmcsd /vlmcsd
-COPY --from=builder /root/vlmcsd/etc/vlmcsd.kmd /vlmcsd.kmd
-RUN apk add --no-cache tzdata
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        build-essential \
+        git \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+
+RUN git clone https://github.com/Wind4/vlmcsd.git .
+
+RUN make
+
+
+FROM debian:trixie-slim
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /build/bin/vlmcsd /usr/local/bin/vlmcsd
 
 EXPOSE 1688/tcp
 
-CMD ["/vlmcsd", "-D", "-d", "-t", "3", "-e", "-v"]
-
+ENTRYPOINT ["/usr/local/bin/vlmcsd"]
+CMD ["-D", "-e"]
