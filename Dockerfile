@@ -14,7 +14,7 @@ WORKDIR /build
 RUN git clone https://github.com/Wind4/vlmcsd.git .
 COPY patches/kms-dangling-pointer.patch /tmp/
 RUN dos2unix src/kms.c \
-    && patch -p0 < /tmp/kms-dangling-pointer.patch
+    && patch -p1 < /tmp/kms-dangling-pointer.patch
 
 RUN make
 
