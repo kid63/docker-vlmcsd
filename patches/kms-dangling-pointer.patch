@@ -1,14 +1,16 @@
---- a/src/kms.c
-+++ b/src/kms.c
+--- a/src/kms.c	2026-11-15 09:57:11.268852375 +0100
++++ b/src/kms.c	2026-11-15 09:57:11.270852357 +0100
 @@ -465,12 +465,12 @@
+ {
+ #if !defined(NO_RANDOM_EPID) || !defined(NO_CL_PIDS) || !defined(NO_INI_FILE)
  	const char* pid;
 +	char ePid[PID_BUFFER_SIZE];
- 
- 	if (RandomizationLevel == 2)
+ 	if (KmsResponseParameters[index].Epid == NULL)
  	{
- 		if (IsValidKmsPid(ApplicationId, KmsData->AppItemList + appIndex))
+ #ifndef NO_RANDOM_EPID
+ 		if (RandomizationLevel == 2)
  		{
 -			char ePid[PID_BUFFER_SIZE];
- 			getRandomPid(appIndex, ePid);
+ 			generateRandomPid(index, ePid, Lcid, HostBuild);
  			pid = ePid;
- 		}
+ 
