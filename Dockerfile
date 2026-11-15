@@ -5,6 +5,7 @@ RUN apt-get update \
         ca-certificates \
         build-essential \
         git \
+        patch \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
