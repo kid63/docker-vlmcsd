@@ -5,7 +5,7 @@
 > vlmcsd is not a one-click activation or crack tool intended to activate illegal copies of software (Windows, Office, Project, Visio)
 
 ## Info / About this docker
-Docker based in Alpine OS with vlmcsd compiled from "source" (Wind4 GitHub)
+Docker based in Debian Trixie with vlmcsd compiled from "source" (Wind4 GitHub)
 
 ## Server Usage:
 > $ docker run -d -p 1688:1688 --restart=always --name vlmcsd mikolatero/vlmcsd
