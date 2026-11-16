@@ -12,7 +12,7 @@ Docker image based on Debian Trixie, with vlmcsd compiled from source (Wind4 Git
 
 ## To view docker log:
 The vlmcsd process sends it's logs directly to Docker.
-> $ docker logs vlmcsd (change 'vlmcsd' with the docker's name)
+> $ docker logs vlmcsd
 
 ## Client
 ### Windows
