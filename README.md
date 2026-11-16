@@ -5,13 +5,13 @@
 > vlmcsd is not a one-click activation or crack tool intended to activate illegal copies of software (Windows, Office, Project, Visio)
 
 ## Info / About this docker
-Docker based in Debian Trixie with vlmcsd compiled from "source" (Wind4 GitHub)
+Docker image based on Debian Trixie, with vlmcsd compiled from source (Wind4 GitHub).
 
 ## Server Usage:
-> $ docker run -d -p 1688:1688 --restart=always --name vlmcsd mikolatero/vlmcsd
+> $ docker run -d -p 1688:1688 --restart=always --name vlmcsd ghcr.io/kid63/docker-vlmcsd
 
 ## To view docker log:
-Now (thanks to embii74) vlmcsd process send logs to docker.
+The vlmcsd process sends it's logs directly to Docker.
 > $ docker logs vlmcsd (change 'vlmcsd' with the docker's name)
 
 ## Client
