@@ -10,9 +10,14 @@ Docker image based on Debian Trixie, with vlmcsd compiled from source (Wind4 Git
 ## Server Usage:
 > $ docker run -d -p 1688:1688 --restart=always --name vlmcsd ghcr.io/kid63/docker-vlmcsd
 
-## To view docker log:
-The vlmcsd process sends it's logs directly to Docker.
-> $ docker logs vlmcsd
+## View Docker Logs
+The vlmcsd process sends its logs directly to Docker.
+
+```bash
+docker logs vlmcsd
+```
+
+Replace `vlmcsd` with your container name if different.
 
 ## Client
 ### Windows
